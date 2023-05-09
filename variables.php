@@ -14,13 +14,13 @@ $fullName = "";
 
 function myName(){
     $sName = "Maina";  //local scope
-    global $fName, $lName; // global keyword used to access global variables fromm within a function
+    global $fName, $lName; // global keyword used to access global variables from within a function
     echo $fName . " " . $lName;
 }
 
 function globalArray(){
     echo $GLOBALS['fName'] . " " . $GLOBALS['lName'] ."<br>";
-    $GLOBALS['fullName'] = "My name is $GLOBALS[fName]" /* $GLOBALS['lName']"*/ ;
+    $GLOBALS['fullName'] = "My name is $GLOBALS[fName] $GLOBALS[lName]" ; //notice, no quotation mark encapsulating the variable name within []
     echo $GLOBALS['fullName'];
 }
 
@@ -28,18 +28,18 @@ function variableParsing(){
     $language = "PHP";
     global $lName;
     echo "I am learning $language. <br>";
-    echo "This is ${lName}'s work.";
+    echo "This is ${lName}'s work."; //This is Phaita's work
 }
 
 function concatenationAssignment(){
     global $lName;
     $intro =  "My name is $lName";
-    echo "$intro. <br>"; 
+    //echo "$intro. <br>"; 
     $intro .= " and I want to grow.";
     echo $intro;
 }
 
-function referenceAssignment(){
+function referenceAssignment(){ // alias - multiple names for the same memory location
     $interest = "pentester";
     $profession = $interest;
     echo "I am working as a $profession";
@@ -67,6 +67,8 @@ concatenationAssignment();
 echo "<br>";
 referenceAssignment();
 
+// numerical values testing
+
 function testStatic1(){
     $num = 4;
     echo ",$num";
@@ -80,6 +82,19 @@ function testStatic2(){
     //each function call increments the value of the number
 }
 
+function mathematicalAssignment(){
+$my_num = 7;
+$answer = $my_num; // = 7
+$answer += 2; // 7 + 2 = 9
+$answer *= 2; // 9 x 2 = 18
+$answer -= 2; // 18 - 2 = 16
+$answer /= 2; // 16 / 2 = 8
+$answer -= $my_num; // 8 - 7 = 1
+echo $answer; // Prints 1
+}
+
+
+
 echo "<br><h1>Numbers</h1><br>";
 testStatic1();
 testStatic1();
@@ -88,5 +103,12 @@ echo "<br>";
 testStatic2();
 testStatic2();
 testStatic2();
+echo "<br>";
+echo 2 ** 6; //exponentiation. result = 64
+echo "<br>";
+echo 10 % 4; //modulo. result = 2
+echo "<br>";
+mathematicalAssignment();
+
 
 ?>
